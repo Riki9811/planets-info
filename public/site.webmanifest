@@ -1,0 +1,19 @@
+{
+	"name": "Planets Info",
+	"short_name": "Planets Info",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#070724",
+	"background_color": "#070724",
+	"display": "standalone"
+}
