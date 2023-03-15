@@ -1,0 +1,25 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 2em;
+    max-width: 40em;
+    height: 100%;
+    text-align: center;
+
+    > p,
+    >button {
+        margin-bottom: 2em;
+    }
+}
+
+.home-btn {
+    min-width: 25em;
+}
+
+.home-btn:active {
+	background-color: var(--active-planet-col);
+    border-color: transparent;
+}
