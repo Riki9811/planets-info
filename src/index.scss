@@ -75,6 +75,7 @@ ul {
 	--white-50: hsla(0, 0%, 100%, 0.5);
 	--white-25: hsla(0, 0%, 100%, 0.25);
 	--white-20: hsla(0, 0%, 100%, 0.2);
+	--white-10: hsla(0, 0%, 100%, 0.1);
 	--dark-blue: #070724;
 	--grey: #38384f;
 	--light-grey: #838391;
@@ -83,11 +84,19 @@ ul {
 	--venus-col: #eda249;
 	--earth-col: #6f2ed6;
 	--mars-col: #d14c32;
-
 	--jupiter-col: #d83a34;
 	--saturn-col: #cd5120;
 	--uranus-col: #1ec2a4;
 	--neptune-col: #2d68f0;
+
+	--mercury-alt-col: #def4fc;
+	--venus-alt-col: #f7cc7f;
+	--earth-alt-col: #545bfe;
+	--mars-alt-col: #ff6a45;
+	--jupiter-alt-col: #ecad7a;
+	--saturn-alt-col: #fccb6b;
+	--uranus-alt-col: #65f0d5;
+	--neptune-alt-col: #497efa;
 
 	--spartan: "Spartan", sans-serif;
 	--antonio: "Antonio", sans-serif;
@@ -379,28 +388,53 @@ body::after {
 
 // #region PLANET COLORS
 .mercury-col {
-    --planet-col: var(--mercury-col)
+	--planet-col: var(--mercury-col);
 }
 .venus-col {
-    --planet-col: var(--venus-col)
+	--planet-col: var(--venus-col);
 }
 .earth-col {
-    --planet-col: var(--earth-col)
+	--planet-col: var(--earth-col);
 }
 .mars-col {
-    --planet-col: var(--mars-col)
+	--planet-col: var(--mars-col);
 }
 .jupiter-col {
-    --planet-col: var(--jupiter-col)
+	--planet-col: var(--jupiter-col);
 }
 .saturn-col {
-    --planet-col: var(--saturn-col)
+	--planet-col: var(--saturn-col);
 }
 .uranus-col {
-    --planet-col: var(--uranus-col)
+	--planet-col: var(--uranus-col);
 }
 .neptune-col {
-    --planet-col: var(--neptune-col)
+	--planet-col: var(--neptune-col);
+}
+
+.mercury-alt-col {
+	--planet-col: var(--mercury-alt-col);
+}
+.venus-alt-col {
+	--planet-col: var(--venus-alt-col);
+}
+.earth-alt-col {
+	--planet-col: var(--earth-alt-col);
+}
+.mars-alt-col {
+	--planet-col: var(--mars-alt-col);
+}
+.jupiter-alt-col {
+	--planet-col: var(--jupiter-alt-col);
+}
+.saturn-alt-col {
+	--planet-col: var(--saturn-alt-col);
+}
+.uranus-alt-col {
+	--planet-col: var(--uranus-alt-col);
+}
+.neptune-alt-col {
+	--planet-col: var(--neptune-alt-col);
 }
 // #endregion
 
@@ -460,22 +494,25 @@ h4 {
 // #endregion
 
 button {
-	--button-hover-col: #d9d9d933;
+	--button-hover-col: #d8d8d833;
 
-	cursor: pointer;
-	position: relative;
 	text-transform: uppercase;
 	font-family: var(--spartan);
 	font-weight: bold;
 	line-height: 1.5625rem; // 25px line
 	font-size: 0.75rem; // 12px size
 	letter-spacing: 0.1625rem; // +2.6px spacing
+
+	cursor: pointer;
 	background: none;
 	background-clip: padding-box;
-	padding: 0.916em 0.416em 0.833em 6.167em;
-	text-align: left;
+	padding: 0.75rem 1.75rem;
 	border: 2px solid var(--button-hover-col);
 	transition: background-color 300ms ease, border-color 300ms ease, scale 300ms ease;
+	display: flex;
+	gap: 1.75rem;
+
+	min-width: 21.875rem; // 350px
 }
 
 button:focus-visible,
@@ -488,8 +525,6 @@ button::before {
 	color: var(--white-50);
 	counter-increment: tab;
 	content: "0" counter(tab);
-	position: absolute;
-	left: 2.25em;
 }
 
 button.active {

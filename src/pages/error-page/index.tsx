@@ -1,5 +1,5 @@
 import { isRouteErrorResponse, useLocation, useRouteError } from "react-router-dom";
-import { Error as ErrorComponent } from "../../components/Error/Error";
+import { default as ErrorComponent } from "../../components/error";
 
 const ERROR_STRINGS = {
 	err404: "The page you are looking for might have been removed, had its name changed or is temporarily unavailable.",

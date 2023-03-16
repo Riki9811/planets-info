@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Error.module.scss";
+import styles from "./styles.module.scss";
 
 interface ErrorProps {
 	h1: string;
@@ -8,7 +8,7 @@ interface ErrorProps {
 	pContent: ReactNode;
 }
 
-export function Error({ h1, h3, pContent }: ErrorProps) {
+export default function Error({ h1, h3, pContent }: ErrorProps) {
 	const navigate = useNavigate();
 	return (
 		<div id="error-page" className={styles.error}>

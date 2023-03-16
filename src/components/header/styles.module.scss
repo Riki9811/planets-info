@@ -1,0 +1,144 @@
+.header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding-inline: 3em 2em;
+	border-bottom: 2px solid var(--white-20);
+	height: 5.3125em; // 85px
+}
+
+.nav {
+	align-self: stretch;
+}
+
+.nav-list {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: center;
+	height: 100%;
+	gap: 2em;
+}
+
+.home-link {
+	font-size: 2rem !important;
+}
+
+.nav-link {
+	color: var(--white-75);
+	height: 100%;
+	display: grid;
+	place-items: center;
+	padding-top: 5px;
+	position: relative;
+	transition: color 300ms ease;
+
+	&:hover,
+	&.active {
+		color: var(--white);
+
+		&::after {
+			width: 100%;
+		}
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		background-color: var(--planet-col, red);
+		width: 0;
+		height: 4px;
+		top: 0;
+		transition: width 300ms ease;
+	}
+}
+
+// width < 912px -> tablet
+@media only screen and (max-width: 57em) {
+	.header {
+		flex-direction: column;
+		padding-inline: 2em;
+		height: 9.9375em; // 159px
+	}
+
+	.nav {
+		height: 45%;
+	}
+
+	.home-link {
+		margin-top: 1rem;
+	}
+
+	.nav-link {
+		padding-top: 0;
+		padding-bottom: 5px;
+
+		&::after {
+			top: unset;
+			bottom: 0;
+		}
+	}
+}
+
+// width < 768px -> phone
+@media only screen and (max-width: 48em) {
+	.header {
+		flex-direction: row;
+		padding-inline: 1.5em;
+		height: 4.5rem; // 68px
+	}
+
+	.nav {
+		position: absolute;
+		left: 0;
+		top: 5.3125em;
+		height: calc(100vh - 5.3125em);
+		width: 100vw;
+	}
+
+	.nav-list {
+		flex-direction: column;
+		justify-content: flex-start;
+		background-color: var(--dark-blue);
+		padding: 1em 1.5em;
+		gap: 0;
+		overflow-y: auto;
+		overflow-x: hidden;
+
+		> li:not(:last-child) {
+			border-bottom: 2px solid var(--white-10);
+		}
+	}
+
+	.home-link {
+		margin-top: unset;
+	}
+
+	.nav-link-mobile {
+		display: flex;
+		position: relative;
+		align-items: center;
+		font-size: 0.9375rem !important; // 15px
+		letter-spacing: 0.085rem !important; // 1.36px
+		padding-block: 20px;
+		gap: 1.375rem;
+
+		> p {
+			margin-right: auto;
+		}
+
+		> svg {
+			scale: 1.7;
+		}
+
+		&::before {
+			position: inherit;
+			content: "";
+			width: 1.5625rem;
+			height: 1.5625rem;
+			border-radius: 50%;
+			background-color: var(--planet-col, red);
+		}
+	}
+}
