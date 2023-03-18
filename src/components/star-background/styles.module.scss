@@ -1,0 +1,84 @@
+.stars {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	inset: 0;
+	z-index: -100;
+	overflow: hidden;
+	opacity: 0.2;
+}
+
+.star {
+	fill: var(--white);
+	stroke: none;
+	animation: flicker ease infinite;
+}
+
+@keyframes flicker {
+	0% {
+		opacity: 1;
+	}
+	45% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	60% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.shooting-stars {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: -100;
+	overflow: hidden;
+}
+
+.shooting-star {
+	position: absolute;
+	width: 0.15em;
+	rotate: 45deg;
+	height: 12em;
+
+	&::before {
+        position: absolute;
+		content: "";
+        left: 0;
+        width: 0.15em;
+		background: linear-gradient(0, var(--white), transparent);
+		filter: drop-shadow(0 0 6px var(--white));
+		border-radius: 10em;
+		opacity: 0;
+		animation: fall linear infinite;
+		animation-duration: inherit;
+		animation-delay: inherit;
+	}
+}
+
+@keyframes fall {
+    0% {
+		height: 0;
+		transform: translate(0);
+	}
+	2% {
+		height: 12em;
+        opacity: 1;
+	}
+	5% {
+		height: 0;
+		opacity: 0.5;
+		transform: translateY(28em);
+	}
+	6% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
