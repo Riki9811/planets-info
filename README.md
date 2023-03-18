@@ -41,6 +41,7 @@ In addition to the specifications given on Frontend Mentor the web app will pres
 * [React.js](https://reactjs.org/)
 * [Dictionary API](https://dictionaryapi.dev/)
 * [React Router](https://reactrouter.com)
+* [Framer Motion](https://www.framer.com/motion/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
