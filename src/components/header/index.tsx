@@ -1,9 +1,9 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AnimatePresence, easeIn, motion, Variants } from "framer-motion";
-import useMediaQuery from "../../hooks/useMediaQuery";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { ReactComponent as Hamburger } from "../../assets/icons/hamburger.svg";
 import { ReactComponent as Chevron } from "../../assets/icons/chevron.svg";
+import { AppContext } from "../../App";
 import styles from "./styles.module.scss";
 
 const ROUTES = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
@@ -42,7 +42,7 @@ const LI_VARIANTS: Variants = {
 };
 
 export default function Header() {
-	const isMobile = useMediaQuery("only screen and (max-width: 48em)");
+    const { isMobile } = useContext(AppContext)!;
 	const [expanded, setExpanded] = useState<boolean>(false);
 
 	// Close the mobile nav when the device stops being mobile
@@ -57,13 +57,7 @@ export default function Header() {
 	function renderMobileNav() {
 		return (
 			<nav id="nav-list" className={styles.nav}>
-				<motion.ul
-					className={styles["nav-list"]}
-					variants={UL_VARIANTS}
-					initial="hidden"
-					animate="show"
-					exit="hidden"
-				>
+				<motion.ul className={styles["nav-list"]} variants={UL_VARIANTS} initial="hidden" animate="show" exit="hidden">
 					{ROUTES.map((planet, index) => (
 						<motion.li key={index} variants={LI_VARIANTS}>
 							<MobileNavLink key={index} planetName={planet} onClickCallback={closeMobileMenu} />
@@ -81,12 +75,7 @@ export default function Header() {
 					Planet info
 				</Link>
 				<AnimatePresence>{expanded && renderMobileNav()}</AnimatePresence>
-				<span
-					aria-label="Menu toggle"
-					aria-expanded={expanded}
-					aria-controls="nav-list"
-					onClick={(e) => setExpanded((prev) => !prev)}
-				>
+				<span aria-label="Menu toggle" aria-expanded={expanded} aria-controls="nav-list" onClick={(e) => setExpanded((prev) => !prev)}>
 					<Hamburger />
 				</span>
 			</header>
@@ -118,11 +107,7 @@ interface MobileNavLinkProps {
 
 function MobileNavLink({ planetName, onClickCallback }: MobileNavLinkProps) {
 	return (
-		<NavLink
-			to={`/${planetName}`}
-			className={`${planetName}-alt-col pseudo-h3 ${styles["nav-link-mobile"]}`}
-			onClick={onClickCallback}
-		>
+		<NavLink to={`/${planetName}`} className={`${planetName}-alt-col pseudo-h3 ${styles["nav-link-mobile"]}`} onClick={onClickCallback}>
 			<p>{planetName}</p>
 			<Chevron />
 		</NavLink>
@@ -137,10 +122,8 @@ function DesktopNavLink({ planetName }: DesktopNavLinkProps) {
 	return (
 		<NavLink
 			to={`/${planetName}`}
-			className={({ isActive, isPending }) => {
-				return `${planetName}-col pseudo-h4 ${styles["nav-link"]} ${
-					isActive || isPending ? styles.active : ""
-				}`;
+			className={({ isActive }) => {
+				return `${planetName}-col pseudo-h4 ${styles["nav-link"]} ${isActive ? styles.active : ""}`;
 			}}
 		>
 			{planetName}

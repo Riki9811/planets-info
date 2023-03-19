@@ -6,6 +6,7 @@
 	padding-inline: 3em 2em;
 	border-bottom: 2px solid var(--white-20);
 	height: 5.3125em; // 85px
+	min-height: 5.3125em; // 85px
     background-color: var(--dark-blue);
 }
 
@@ -61,6 +62,7 @@
 		flex-direction: column;
 		padding-inline: 2em;
 		height: 9.9375em; // 159px
+		min-height: 9.9375em; // 159px
 	}
 
 	.nav {
@@ -88,6 +90,8 @@
 		flex-direction: row;
 		padding-inline: 1.5em;
 		height: 4.5rem; // 68px
+		min-height: 4.5rem; // 68px
+        z-index: 100;
 	}
 
 	.nav {

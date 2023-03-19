@@ -1,5 +1,26 @@
 import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion, Variants } from "framer-motion";
 import styles from "./styles.module.scss";
+
+const SOLAR_SYSTEM_VARIANTS: Variants = {
+	hidden: {
+		opacity: 0,
+		scale: 2.5,
+		rotate: -45,
+		transition: {
+			duration: 2,
+		},
+	},
+	show: {
+		opacity: 1,
+		scale: 1,
+		rotate: 0,
+		transition: {
+			duration: 2,
+		},
+	},
+};
 
 export default function HomePage() {
 	const btns = [useRef<HTMLButtonElement>(null), useRef<HTMLButtonElement>(null), useRef<HTMLButtonElement>(null)];
@@ -18,30 +39,17 @@ export default function HomePage() {
 
 	return (
 		<div className={styles.home}>
-			<h1>Donec justo eget</h1>
-			<h2>felis facilisis fermentum</h2>
-			<h3>Aliquam porttitor mauris sit amet orci</h3>
-			<h4>aenean dignissim pellentesque felis.</h4>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, sequi. Dolorem ullam rem quas
-				debitis quo iure aperiam totam accusamus! Autem ipsa excepturi sapiente ex voluptatibus facilis libero
-				fugit voluptatum?
-			</p>
-			<br />
-			<br />
-			<button ref={btns[0]} onClick={(e) => setBtnActive(0, e.currentTarget)}>
-				button
-			</button>
-			<br />
-			<br />
-			<button ref={btns[1]} onClick={(e) => setBtnActive(1, e.currentTarget)}>
-				button
-			</button>
-			<br />
-			<br />
-			<button ref={btns[2]} onClick={(e) => setBtnActive(2, e.currentTarget)}>
-				button
-			</button>
+			<motion.div className={styles["solar-system"]} variants={SOLAR_SYSTEM_VARIANTS} initial="hidden" animate="show" exit="hidden">
+				<div className={styles.sun} />
+				<Link to="/neptune" className={`neptune-col ${styles.orbit} ${styles.neptune}`} />
+				<Link to="/uranus" className={`uranus-col ${styles.orbit} ${styles.uranus}`} />
+				<Link to="/saturn" className={`saturn-col ${styles.orbit} ${styles.saturn}`} />
+				<Link to="/jupiter" className={`jupiter-col ${styles.orbit} ${styles.jupiter}`} />
+				<Link to="/mars" className={`mars-col ${styles.orbit} ${styles.mars}`} />
+				<Link to="/earth" className={`earth-col ${styles.orbit} ${styles.earth}`} />
+				<Link to="/venus" className={`venus-col ${styles.orbit} ${styles.venus}`} />
+				<Link to="/mercury" className={`mercury-col ${styles.orbit} ${styles.mercury}`} />
+			</motion.div>
 		</div>
 	);
 }

@@ -1,19 +1,24 @@
-import data from "./assets/data.json";
-import Header from "./components/header";
 import { Outlet } from "react-router-dom";
+import Header from "./components/header";
+import { createContext } from "react";
+import useMediaQuery from "./hooks/useMediaQuery";
 import styles from "./App.module.scss";
-import StarBackground from "./components/star-background";
+
+type Context = {
+	isMobile: boolean;
+};
+
+export const AppContext = createContext<Context | undefined>(undefined);
 
 export default function App() {
+	const isMobile = useMediaQuery("only screen and (max-width: 48em)");
+
 	return (
-		<>
-			<StarBackground />
+		<AppContext.Provider value={{ isMobile }}>
 			<div className={styles.app}>
 				<Header />
-				<section>
-					<Outlet />
-				</section>
+				<Outlet />
 			</div>
-		</>
+		</AppContext.Provider>
 	);
 }

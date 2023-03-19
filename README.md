@@ -50,10 +50,13 @@ In addition to the specifications given on Frontend Mentor the web app will pres
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Page routing with <a href="https://reactrouter.com">React Router v6</a>.
-- [ ] Main site layout depending on user device.
-- [ ] Header with navbar and footer.
-- [ ] Planet info shower for any planet.
+- [x] Page routing with <a href="https://reactrouter.com">React Router v6</a>.
+- [x] Animated routes with <a href="https://www.framer.com/motion/">Framer Motion</a>.
+- [x] Header with navbar and navigation options.
+- [x] Star background (flickering + shooting stars).
+- [x] Home page solar system with pseudo-realistic animations.
+- [ ] Planet page layout depending on user device.
+- [ ] Info shower connected to all the routes.
 - [ ] CSS polishing.
 
 See the [open issues](https://github.com/Riki9811/planets-info/issues) for a full list of proposed features (and known issues).
