@@ -17,7 +17,9 @@ export default function App() {
 		<AppContext.Provider value={{ isMobile }}>
 			<div className={styles.app}>
 				<Header />
-				<Outlet />
+				<section className={styles.outlet}>
+					<Outlet />
+				</section>
 			</div>
 		</AppContext.Provider>
 	);

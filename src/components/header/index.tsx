@@ -11,9 +11,6 @@ const ROUTES = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranu
 const UL_VARIANTS: Variants = {
 	hidden: {
 		opacity: 0,
-		transition: {
-			delay: 0.2,
-		},
 	},
 	show: {
 		opacity: 1,

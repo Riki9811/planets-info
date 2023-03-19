@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 import styles from "./styles.module.scss";
 
-const SOLAR_SYSTEM_VARIANTS: Variants = {
+const ANIMATION: Variants = {
 	hidden: {
 		opacity: 0,
 		scale: 2.5,
@@ -39,7 +39,7 @@ export default function HomePage() {
 
 	return (
 		<div className={styles.home}>
-			<motion.div className={styles["solar-system"]} variants={SOLAR_SYSTEM_VARIANTS} initial="hidden" animate="show" exit="hidden">
+			<motion.div className={styles["solar-system"]} variants={ANIMATION} initial="hidden" animate="show" exit="hidden">
 				<div className={styles.sun} />
 				<Link to="/neptune" className={`neptune-col ${styles.orbit} ${styles.neptune}`} />
 				<Link to="/uranus" className={`uranus-col ${styles.orbit} ${styles.uranus}`} />

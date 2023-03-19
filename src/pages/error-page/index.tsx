@@ -1,34 +1,62 @@
-import { isRouteErrorResponse, useLocation, useRouteError } from "react-router-dom";
-import { default as ErrorComponent } from "../../components/error";
+import { Variants, motion } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./styles.module.scss";
 
 const ERROR_STRINGS = {
 	err404: "The page you are looking for might have been removed, had its name changed or is temporarily unavailable.",
 };
 
+const FADE_ANIMATION: Variants = {
+	hidden: {
+		transition: {
+            staggerChildren: 0.25,
+            staggerDirection: -1,
+			when: "afterChildren",
+		},
+	},
+	show: {
+		transition: {
+			staggerChildren: 0.5,
+		},
+	},
+};
+
+const ZOOM_ANIMATION: Variants = {
+	hidden: {
+		scale: 0,
+		opacity: 0,
+		transition: {
+			duration: 0.5,
+		},
+	},
+	show: {
+		scale: 1,
+		opacity: 1,
+		transition: {
+			duration: 1,
+		},
+	},
+};
+
 export default function ErrorPage() {
-	const error = useRouteError();
 	const location = useLocation();
+	const navigate = useNavigate();
 
-	if (isRouteErrorResponse(error)) {
-		if (error.status === 404) {
-			return (
-				<ErrorComponent
-					h1="Oops!"
-					h3={`404 - Page "${location.pathname}" not found`}
-					pContent={ERROR_STRINGS.err404}
-				/>
-			);
-		}
-
-		var cont = error.error?.message && (
-			<p>
-				<i>{error.error.message}</i>
-			</p>
-		);
-		return <ErrorComponent h1="Oops!" h3={`${error.status} ${error.statusText}`} pContent={cont} />;
-	} else if (error instanceof Error) {
-		return <ErrorComponent h1="Oops!" h3="Something went wrong." pContent={<i>{error.message}</i>} />;
-	} else {
-		return <ErrorComponent h1="Oops!" h3="Sorry, an unexpected error has occurred." pContent={String(error)} />;
-	}
+	return (
+		<motion.div id="error-page" className={styles.error} variants={FADE_ANIMATION} initial="hidden" animate="show" exit="hidden">
+			<motion.div variants={ZOOM_ANIMATION}>
+				<h1>Oops!</h1>
+				<h3>{`404 - Page "${location.pathname}" not found`}</h3>
+				<p>{ERROR_STRINGS.err404}</p>
+			</motion.div>
+			<motion.div variants={ZOOM_ANIMATION}>
+				<button className={styles["home-btn"]} onClick={(e) => navigate(-1)}>
+					Go back
+				</button>
+				<button className={styles["home-btn"]} onClick={(e) => navigate("/")}>
+					Go to homepage
+				</button>
+			</motion.div>
+		</motion.div>
+	);
 }
