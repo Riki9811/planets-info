@@ -101,7 +101,7 @@ ul {
 	--spartan: "Spartan", sans-serif;
 	--antonio: "Antonio", sans-serif;
 
-	--active-planet-col: var(--mercury-col);
+	--planet-col: var(--mercury-col);
 
 	color-scheme: dark;
 	font-synthesis: none;
@@ -233,7 +233,7 @@ h4 {
 // #endregion
 
 button {
-	--button-hover-col: #d8d8d833;
+	--button-hover-col: #313148;
 
 	text-transform: uppercase;
 	font-family: var(--spartan);
@@ -244,7 +244,6 @@ button {
 
 	cursor: pointer;
 	background: none;
-	background-clip: padding-box;
 	padding: 0.75rem 1.75rem;
 	border: 2px solid var(--button-hover-col);
 	transition: background-color 300ms ease, border-color 300ms ease, scale 300ms ease;
@@ -266,9 +265,8 @@ button::before {
 	content: "0" counter(tab);
 }
 
-button.active {
-	background-clip: border-box;
-	background-color: var(--active-planet-col);
+button[data-active="true"] {
+	background-color: var(--planet-col);
 	border-color: transparent;
 }
 

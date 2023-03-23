@@ -20,6 +20,14 @@ const ANIMATION: Variants = {
 			duration: 2,
 		},
 	},
+	disappear: {
+		opacity: 0,
+		scale: 0.5,
+		rotate: 45,
+		transition: {
+			duration: 2,
+		},
+	},
 };
 
 export default function HomePage() {
@@ -39,7 +47,7 @@ export default function HomePage() {
 
 	return (
 		<div className={styles.home}>
-			<motion.div className={styles["solar-system"]} variants={ANIMATION} initial="hidden" animate="show" exit="hidden">
+			<motion.div className={styles["solar-system"]} variants={ANIMATION} initial="hidden" animate="show" exit="disappear">
 				<div className={styles.sun} />
 				<Link to="/neptune" className={`neptune-col ${styles.orbit} ${styles.neptune}`} />
 				<Link to="/uranus" className={`uranus-col ${styles.orbit} ${styles.uranus}`} />
