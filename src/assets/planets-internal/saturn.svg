@@ -13,13 +13,21 @@
 	<g mask="url(#b)">
 		<path opacity=".078" fill="#000" d="M334 110h209.089v416H334z" />
 	</g>
-	<path fill-rule="evenodd" clip-rule="evenodd" d="M334 520c111.562 0 202-90.438 202-202s-90.438-202-202-202v404z" fill="#9C4925" />
-	<mask id="c" maskUnits="userSpaceOnUse" x="334" y="116" width="202" height="404">
-		<path fill-rule="evenodd" clip-rule="evenodd" d="M334 520c111.562 0 202-90.438 202-202s-90.438-202-202-202v404z" fill="#fff" />
-	</mask>
-	<g mask="url(#c)">
-		<circle cx="335" cy="318" r="114" fill="#E09B7F" />
-		<circle cx="334.5" cy="318.5" r="34.5" fill="#FEC" />
-	</g>
+
+    <mask id="coreMask">
+        <circle cx="334" cy="318" r="208" fill="#fff" />
+        <circle id="maskAnimationCenter" cx="334" cy="318" r="208" fill="#000" />
+    </mask>
+
+	<g mask="url(#coreMask)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M334 520c111.562 0 202-90.438 202-202s-90.438-202-202-202v404z" fill="#9C4925" />
+        <mask id="c" maskUnits="userSpaceOnUse" x="334" y="116" width="202" height="404">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M334 520c111.562 0 202-90.438 202-202s-90.438-202-202-202v404z" fill="#fff" />
+        </mask>
+        <g mask="url(#c)">
+            <circle cx="335" cy="318" r="114" fill="#E09B7F" />
+            <circle cx="334.5" cy="318.5" r="34.5" fill="#FEC" />
+        </g>
+    </g>
 	<path fill-rule="evenodd" clip-rule="evenodd" d="M53.284 53.285a14 14 0 00-.357.345c-28.705 28.704 73.709 177.657 228.747 332.695C436.712 541.363 585.665 643.777 614.37 615.072c.117-.117.232-.236.345-.357l-45.524-45.524c-.112.122-.227.242-.344.359-24.049 24.05-148.848-61.756-278.745-191.653C160.206 248 74.4 123.202 98.449 99.152c.118-.117.237-.232.359-.344L53.284 53.285zm56.563 56.562c-22.886 22.886 58.759 141.637 182.36 265.238 123.601 123.601 242.352 205.246 265.238 182.36l-17.143-17.143a9.717 9.717 0 01-.343.36c-21.14 21.14-130.647-54.091-244.589-168.033C181.428 258.687 106.197 149.18 127.337 128.04c.118-.117.237-.231.36-.343l-17.85-17.85z" fill="#B87D43" />
 </svg>

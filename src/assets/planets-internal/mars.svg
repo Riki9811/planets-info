@@ -24,7 +24,13 @@
 			<use xlink:href="#g" />
 		</mask>
 		<path fill="#000" fill-rule="nonzero" mask="url(#h)" opacity=".078" d="M169-16h184v368H169z" />
-		<g transform="translate(169 7)">
+		
+        <mask id="coreMask">
+            <use xlink:href="#a" transform="translate(-169, -7)" fill="#fff" />
+            <use id="maskAnimation" xlink:href="#a" transform="translate(-169, -7)" fill="#000" />
+        </mask>
+        
+        <g transform="translate(169 7)" mask="url(#coreMask)">
 			<mask id="j" fill="#fff">
 				<use xlink:href="#i" />
 			</mask>

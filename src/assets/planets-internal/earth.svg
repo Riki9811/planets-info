@@ -34,15 +34,21 @@
 			<use xlink:href="#k" />
 		</mask>
 		<path fill="#000" fill-rule="nonzero" mask="url(#l)" opacity=".078" d="M225.484-25h250.484v500H225.484z" />
-		<g transform="translate(225 7)">
+
+        <mask id="coreMask">
+            <use xlink:href="#a" transform="translate(-225, -7)" fill="#fff" />
+            <use id="maskAnimation" xlink:href="#a" transform="translate(-225, -7)" fill="#000" />
+        </mask>
+
+        <g transform="translate(225 7)" mask="url(#coreMask)">
 			<mask id="n" fill="#fff">
 				<use xlink:href="#m" />
-			</mask>
+            </mask>
 			<use fill="#2A2D80" xlink:href="#m" />
 			<circle cx="1.5" cy="219.5" r="208.5" fill="#952525" mask="url(#n)" />
 			<circle cx="2" cy="218" r="178" fill="#E0592F" mask="url(#n)" />
 			<circle cx="2" cy="218" r="107" fill="#F89035" mask="url(#n)" />
 			<circle cx="1" cy="219" r="51" fill="#FFF1AA" mask="url(#n)" />
-		</g>
+        </g>
 	</g>
 </svg>

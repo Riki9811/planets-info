@@ -24,12 +24,20 @@
 	<g mask="url(#d)">
 		<path opacity=".078" fill="#000" d="M229 0h229v458H229z" />
 	</g>
-	<path fill-rule="evenodd" clip-rule="evenodd" d="M229 450c122.055 0 221-98.945 221-221S351.055 8 229 8v442z" fill="#138B83" />
-	<mask id="e" maskUnits="userSpaceOnUse" x="229" y="8" width="221" height="442">
-		<path fill-rule="evenodd" clip-rule="evenodd" d="M229 450c122.055 0 221-98.945 221-221S351.055 8 229 8v442z" fill="#fff" />
-	</mask>
-	<g mask="url(#e)">
-		<circle cx="230" cy="229" r="145" fill="#1BB9AE" />
-		<circle cx="228.5" cy="229.5" r="32.5" fill="#06504C" />
-	</g>
+
+    <mask id="coreMask">
+        <circle cx="50%" cy="50%" r="50%" fill="#fff" />
+        <circle id="maskAnimationCenter" cx="50%" cy="50%" r="50%" fill="#000" />
+    </mask>
+
+	<g mask="url(#coreMask)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M229 450c122.055 0 221-98.945 221-221S351.055 8 229 8v442z" fill="#138B83" />
+        <mask id="e" maskUnits="userSpaceOnUse" x="229" y="8" width="221" height="442">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M229 450c122.055 0 221-98.945 221-221S351.055 8 229 8v442z" fill="#fff" />
+        </mask>
+        <g mask="url(#e)">
+            <circle cx="230" cy="229" r="145" fill="#1BB9AE" />
+            <circle cx="228.5" cy="229.5" r="32.5" fill="#06504C" />
+        </g>
+    </g>
 </svg>

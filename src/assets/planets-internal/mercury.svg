@@ -14,14 +14,20 @@
 			<use xlink:href="#c" />
 		</mask>
 		<path fill="#000" fill-rule="nonzero" mask="url(#d)" opacity=".078" d="M146 0h145v290H146z" />
-		<g transform="translate(146 6)">
+
+        <mask id="coreMask">
+            <use xlink:href="#a" transform="translate(-146, -6)" fill="#fff" />
+            <use id="maskAnimation" xlink:href="#a" transform="translate(-146, -6)" fill="#000" />
+        </mask>
+
+		<g transform="translate(146 6)" mask="url(#coreMask)">
 			<mask id="f" fill="#fff">
 				<use xlink:href="#e" />
-			</mask>
+            </mask>
 			<use fill="#7A939C" xlink:href="#e" />
 			<circle cx="1" cy="140" r="131" fill="#9AB2BB" mask="url(#f)" />
 			<circle cx="1" cy="139" r="95" fill="#E8903F" mask="url(#f)" />
 			<circle cx=".5" cy="139.5" r="41.5" fill="#FFEA87" mask="url(#f)" />
-		</g>
+        </g>
 	</g>
 </svg>
