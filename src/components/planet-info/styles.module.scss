@@ -1,0 +1,115 @@
+.container {
+	width: 100%;
+	height: 100%;
+
+	display: grid;
+	grid-template:
+		"planet title" 1fr
+		"planet desc" min-content
+		"planet btns" 1fr
+		"data data" min-content /
+		2fr 1fr;
+	row-gap: 23px;
+
+	padding-inline: 2%;
+	margin: 0 auto;
+	max-width: 1110px;
+}
+
+.planet {
+	grid-area: planet;
+	position: relative;
+	display: grid;
+	place-items: center;
+}
+
+.geology {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	translate: -50% 0;
+	width: 163px;
+	height: 199px;
+	background-size: cover;
+    transform-origin: top center;
+
+	&.mercury {
+		background-image: url(../../assets/geology/mercury.png);
+	}
+	&.venus {
+		background-image: url(../../assets/geology/venus.png);
+	}
+	&.earth {
+		background-image: url(../../assets/geology/earth.png);
+	}
+	&.mars {
+		background-image: url(../../assets/geology/mars.png);
+	}
+	&.jupiter {
+		background-image: url(../../assets/geology/jupiter.png);
+	}
+	&.saturn {
+		background-image: url(../../assets/geology/saturn.png);
+	}
+	&.uranus {
+		background-image: url(../../assets/geology/uranus.png);
+	}
+	&.neptune {
+		background-image: url(../../assets/geology/neptune.png);
+	}
+}
+
+.title {
+	grid-area: title;
+	align-self: end;
+}
+
+.desc {
+	grid-area: desc;
+}
+
+.link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1ch;
+	color: var(--white-50);
+
+	> a {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1ch;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+}
+
+.btns {
+	grid-area: btns;
+	display: flex;
+	flex-direction: column;
+	gap: 23px;
+}
+
+.data {
+	grid-area: data;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	gap: 30px;
+}
+
+.data-container {
+	width: 255px;
+	height: 128px;
+	border: 2px solid var(--white-20);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px 23px;
+
+	> span:first-child {
+		color: var(--white-50);
+	}
+}

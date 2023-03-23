@@ -36,9 +36,9 @@ export default function parseData(planetData: UnparsedPlanetData): PlanetData {
 }
 
 function parseBySpace(spaceSeparated: string): number {
-	return parseFloat(spaceSeparated.split(" ")[0]);
+	return parseFloat(spaceSeparated.split(" ")[0].replace(",", ""));
 }
 
 function parseTemperature(temp: string): number {
-	return parseFloat(temp.substring(0, temp.length - 2));
+	return parseFloat(temp.substring(0, temp.length - 2).replace(",", ""));
 }
