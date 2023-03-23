@@ -15,6 +15,30 @@ const TITLE_ANIMATION: Variants = {
 	},
 };
 
+const PLANET_ANIMATION: Variants = {
+	hidden: {
+		scale: 0.7,
+		opacity: 0,
+		translateX: "20%",
+		translateY: "5%",
+		rotate: 90,
+	},
+	show: {
+		scale: 1,
+		opacity: 1,
+		translateX: 0,
+		translateY: 0,
+		rotate: 0,
+	},
+	exit: {
+		scale: 0.7,
+		opacity: 0,
+		translateX: "-20%",
+		translateY: "5%",
+		rotate: -90,
+	},
+};
+
 const GEOLOGY_BUBBLE_ANIMATION: Variants = {
 	hidden: {
 		scale: 0,
@@ -53,15 +77,15 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 	return (
 		<div className={`${name}-col ${styles.container}`}>
 			<div className={styles.planet}>
-				<PlanetSvg name={name} internal={showing === "structure"} className={styles.svg} />
-				<AnimatePresence>
-					{showing === "geology" && (
-						<motion.div variants={GEOLOGY_BUBBLE_ANIMATION} initial="hidden" animate="show" exit="hidden" className={`${styles.geology} ${styles[name]}`} />
-					)}
-				</AnimatePresence>
+				<motion.div {...motionProps(PLANET_ANIMATION, false)}>
+					<PlanetSvg name={name} internal={showing === "structure"} />
+					<AnimatePresence>
+						{showing === "geology" && <motion.div {...motionProps(GEOLOGY_BUBBLE_ANIMATION)} className={`${styles.geology} ${styles[name]}`} />}
+					</AnimatePresence>
+				</motion.div>
 			</div>
 
-			<motion.h1 variants={TITLE_ANIMATION} initial="hidden" animate="show" exit="hidden" className={styles.title}>
+			<motion.h1 {...motionProps(TITLE_ANIMATION, false)} className={styles.title}>
 				{name}
 			</motion.h1>
 
@@ -107,4 +131,8 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 			</div>
 		</div>
 	);
+}
+
+function motionProps(variants: Variants, exitOnInitial: boolean = true) {
+	return { initial: "hidden", animate: "show", exit: exitOnInitial ? "hidden" : "exit", transition: { duration: 1 }, variants };
 }
