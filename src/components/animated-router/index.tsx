@@ -1,16 +1,16 @@
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
 import App from "../../App";
-import HomePage from "../../pages/home-page";
-import Mercury from "../../pages/mercury";
-import Venus from "../../pages/venus";
 import Earth from "../../pages/earth";
-import Mars from "../../pages/mars";
+import ErrorPage from "../../pages/error-page";
+import HomePage from "../../pages/home-page";
 import Jupiter from "../../pages/jupiter";
+import Mars from "../../pages/mars";
+import Mercury from "../../pages/mercury";
+import Neptune from "../../pages/neptune";
 import Saturn from "../../pages/saturn";
 import Uranus from "../../pages/uranus";
-import Neptune from "../../pages/neptune";
-import ErrorPage from "../../pages/error-page";
+import Venus from "../../pages/venus";
 
 export default function AnimatedRouter() {
 	const location = useLocation();

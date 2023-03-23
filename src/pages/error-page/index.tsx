@@ -1,4 +1,4 @@
-import { Variants, motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 

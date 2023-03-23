@@ -1,12 +1,12 @@
 .app {
 	display: flex;
 	flex-direction: column;
-    height: 100%;
+	height: 100%;
 }
 
 .outlet {
-    flex-grow: 1;
-    padding: 1%;
-    overflow-x: hidden;
-    overflow-y: auto;
+	flex-grow: 1;
+	padding: 1%;
+	overflow-x: hidden;
+	overflow-y: auto;
 }

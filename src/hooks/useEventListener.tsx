@@ -5,11 +5,7 @@ import { useEffect, useRef } from "react";
  * The hook sets up the function `callBack` so that it will be called whenever the
  * specified `eventType` is delivered to the `target`.
  */
-export default function useEventListener(
-	eventType: keyof WindowEventMap,
-	callBack: Function,
-	target: EventTarget | null = window
-) {
+export default function useEventListener(eventType: keyof WindowEventMap, callBack: Function, target: EventTarget | null = window) {
 	// Reference to the current value of mutable `callBack`.
 	const callbackRef = useRef(callBack);
 

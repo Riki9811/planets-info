@@ -1,6 +1,6 @@
-import { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 const ANIMATION: Variants = {

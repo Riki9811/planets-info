@@ -1,7 +1,6 @@
-import { useMemo, useState } from "react";
 import { motion, Variants } from "framer-motion";
+import { useMemo, useState } from "react";
 import PlanetData, { PlanetDescription } from "../../types/PlanetData";
-import styles from "./styles.module.scss";
 
 const TITLE_ANIMATION: Variants = {
 	hidden: {

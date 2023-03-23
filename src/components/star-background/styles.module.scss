@@ -36,7 +36,7 @@
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-    inset: 0;
+	inset: 0;
 	z-index: -100;
 	overflow: hidden;
 }
@@ -48,10 +48,10 @@
 	height: 12em;
 
 	&::before {
-        position: absolute;
+		position: absolute;
 		content: "";
-        left: 0;
-        width: 0.15em;
+		left: 0;
+		width: 0.15em;
 		background: linear-gradient(0, var(--white), transparent);
 		filter: drop-shadow(0 0 6px var(--white));
 		border-radius: 10em;
@@ -63,13 +63,13 @@
 }
 
 @keyframes fall {
-    0% {
+	0% {
 		height: 0;
 		transform: translate(0);
 	}
 	2% {
 		height: 12em;
-        opacity: 1;
+		opacity: 1;
 	}
 	5% {
 		height: 0;

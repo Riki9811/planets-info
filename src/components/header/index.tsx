@@ -1,9 +1,9 @@
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { MouseEventHandler, useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AnimatePresence, motion, Variants } from "framer-motion";
-import { ReactComponent as Hamburger } from "../../assets/icons/hamburger.svg";
-import { ReactComponent as Chevron } from "../../assets/icons/chevron.svg";
 import { AppContext } from "../../App";
+import { ReactComponent as Chevron } from "../../assets/icons/chevron.svg";
+import { ReactComponent as Hamburger } from "../../assets/icons/hamburger.svg";
 import styles from "./styles.module.scss";
 
 const ROUTES = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
