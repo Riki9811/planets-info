@@ -1,0 +1,17 @@
+.container {
+	width: 255px;
+	height: 128px;
+	border: 2px solid var(--white-20);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px 23px;
+
+	> span:first-child {
+		color: var(--white-50);
+	}
+}
+
+.tempButton {
+    margin-top: 2em;
+}
