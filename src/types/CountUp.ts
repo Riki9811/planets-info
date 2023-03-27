@@ -1,5 +1,5 @@
 type VoidFn = () => void;
-type UpdateFn = (newEnd: number) => void;
+type UpdateFn = (newEnd: number, startOnUpdate?: boolean) => void;
 
 export interface CountUpApi {
 	invert: VoidFn;

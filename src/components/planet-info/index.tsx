@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { useContext, useMemo, useState } from "react";
-import PlanetData, { PlanetDescription } from "../../types/PlanetData";
+import { useContext, useEffect, useMemo, useState } from "react";
+import PlanetData, { PlanetDescription, PlanetName } from "../../types/PlanetData";
 import PlanetSvg from "../planet-svg";
 import DataDisplay from "../data-display";
 import { ReactComponent as SourceIcon } from "../../assets/icons/source.svg";
@@ -22,23 +22,17 @@ const PLANET_ANIMATION: Variants = {
 	hidden: {
 		scale: 0.7,
 		opacity: 0,
-		translateX: "20%",
-		translateY: "5%",
-		rotate: 90,
+		translateX: "30%",
 	},
 	show: {
 		scale: 1,
 		opacity: 1,
 		translateX: 0,
-		translateY: 0,
-		rotate: 0,
 	},
 	exit: {
 		scale: 0.7,
 		opacity: 0,
-		translateX: "-20%",
-		translateY: "5%",
-		rotate: -90,
+		translateX: "-30%",
 	},
 };
 
@@ -66,22 +60,19 @@ interface PlanetInfoProps {
 	data: PlanetData;
 }
 
-const DEFAULT_COUNT_UP = {
-	decimals: 2,
-};
-
 export default function PlanetInfo({ data }: PlanetInfoProps) {
 	// Planet name (title)
-	const name = data.name.toLowerCase();
+	const name = data.name.toLowerCase() as PlanetName;
 	// What info to show
 	const [showing, setShowing] = useState<"overview" | "structure" | "geology">("overview");
 	const description = useMemo<PlanetDescription>(() => data[showing], [data, showing]);
 	// Planet stats
 	const { formatters } = useContext(AppContext)!;
-	const { invert: invertRotation, value: rotation } = useCountUp({ end: data.rotation, ...DEFAULT_COUNT_UP });
-	const { invert: invertRevolution, value: revolution } = useCountUp({ end: data.revolution, ...DEFAULT_COUNT_UP });
-	const { invert: invertRadius, value: radius } = useCountUp({ end: data.radius, ...DEFAULT_COUNT_UP });
-	const { invert: invertTemp, value: temperature } = useCountUp({ end: data.temperature, ...DEFAULT_COUNT_UP });
+	const [countUpDuration, setCountUpDuration] = useState<number>(0.8);
+	const { update: updateRotation, value: rotation } = useCountUp({ end: data.rotation, decimals: 2, duration: countUpDuration });
+	const { update: updateRevolution, value: revolution } = useCountUp({ end: data.revolution, decimals: 2, duration: countUpDuration });
+	const { update: updateRadius, value: radius } = useCountUp({ end: data.radius, decimals: 2, duration: countUpDuration });
+	const { update: updateTemp, value: temperature } = useCountUp({ end: data.temperature, decimals: 2, duration: countUpDuration });
 
 	const showOverview = () => setShowing("overview");
 	const showStructure = () => setShowing("structure");
@@ -89,10 +80,11 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 
 	function onAnimationStart(animName: string) {
 		if (animName === "exit") {
-			invertRotation();
-			invertRevolution();
-			invertRadius();
-			invertTemp();
+            setCountUpDuration(0.4);
+            updateRotation(0, true);
+			updateRevolution(0, true);
+			updateRadius(0, true);
+			updateTemp(0, true);
 		}
 	}
 
@@ -103,12 +95,7 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 				<motion.div {...motionProps(PLANET_ANIMATION, false)}>
 					<PlanetSvg name={name} internal={showing === "structure"} />
 					<AnimatePresence>
-						{showing === "geology" && (
-							<motion.div
-								{...motionProps(GEOLOGY_BUBBLE_ANIMATION)}
-								className={`${styles.geology} ${styles[name]}`}
-							/>
-						)}
+						{showing === "geology" && <motion.div {...motionProps(GEOLOGY_BUBBLE_ANIMATION)} className={`${styles.geology} ${styles[name]}`} />}
 					</AnimatePresence>
 				</motion.div>
 			</div>
@@ -117,11 +104,7 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 
 	function renderTitle() {
 		return (
-			<motion.h1
-				{...motionProps(TITLE_ANIMATION, false)}
-				className={styles.title}
-				onAnimationStart={onAnimationStart}
-			>
+			<motion.h1 {...motionProps(TITLE_ANIMATION, false)} className={styles.title} onAnimationStart={onAnimationStart}>
 				{name}
 			</motion.h1>
 		);

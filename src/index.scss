@@ -277,20 +277,3 @@ a:active {
 	color: inherit;
 	text-decoration: inherit;
 }
-
-// #region PLANET SVG ANIMATIONS
-#maskAnimation,
-#maskAnimationCenter {
-	rotate: y 0deg;
-	transition: rotate 0.5s ease-in-out;
-}
-
-#maskAnimationCenter {
-	transform-origin: center;
-}
-
-.showCore #maskAnimation,
-.showCore #maskAnimationCenter {
-	rotate: y 90deg;
-}
-// #endregion

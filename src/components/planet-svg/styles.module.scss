@@ -1,0 +1,84 @@
+.planet {
+	position: relative;
+	width: var(--size);
+	height: var(--size);
+	background-image: var(--image);
+
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+		inset: 0;
+		background-image: var(--image-internal);
+		rotate: y 90deg;
+		transition: rotate 500ms ease-in-out;
+	}
+
+	&::after {
+		translate: 1px 0;
+	}
+
+	&.internal {
+		&::before {
+			rotate: y 0deg;
+		}
+
+		&::after {
+			rotate: y 110deg;
+		}
+	}
+}
+
+.mercury {
+	--size: 290px;
+	--image: url(../../assets/planets/mercury.svg);
+	--image-internal: url(../../assets/planets-internal/mercury.svg);
+}
+
+.venus {
+	--size: 400px;
+	--image: url(../../assets/planets/venus.svg);
+	--image-internal: url(../../assets/planets-internal/venus.svg);
+}
+
+.earth {
+	--size: 450px;
+	--image: url(../../assets/planets/earth.svg);
+	--image-internal: url(../../assets/planets-internal/earth.svg);
+}
+
+.mars {
+	--size: 336px;
+	--image: url(../../assets/planets/mars.svg);
+	--image-internal: url(../../assets/planets-internal/mars.svg);
+}
+
+.jupiter {
+	--size: 582px;
+	--image: url(../../assets/planets/jupiter.svg);
+	--image-internal: url(../../assets/planets-internal/jupiter.svg);
+}
+
+.saturn {
+	--size: 666px;
+	--image: url(../../assets/planets/saturn.svg);
+	--image-internal: url(../../assets/planets-internal/saturn.svg);
+
+	.rings {
+		position: absolute;
+		inset: 0;
+		background-image: url(../../assets/planets/saturn-rings.svg);
+	}
+}
+
+.uranus {
+	--size: 458px;
+	--image: url(../../assets/planets/uranus.svg);
+	--image-internal: url(../../assets/planets-internal/uranus.svg);
+}
+
+.neptune {
+	--size: 450px;
+	--image: url(../../assets/planets/neptune.svg);
+	--image-internal: url(../../assets/planets-internal/neptune.svg);
+}

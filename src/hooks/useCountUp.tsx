@@ -46,13 +46,13 @@ export default function useCountUp(props: CountUpProps): CountUpApi {
 		// Check if we should stop counting (by checking if ref.current has gone past the end)
 		const stopCounting = (countingDown && ref.current < rangeEnd) || (!countingDown && ref.current > rangeEnd);
 		if (stopCounting) {
-            // Set value equals to rangeEnd
-            setValue(rangeEnd);
+			// Set value equals to rangeEnd
+			setValue(rangeEnd);
 			// Stop running
 			setIsRunning(false);
 			// Call 'onEnd' callback
 			props.onEnd?.({ invert, pauseResume, reset, start, update });
-            return;
+			return;
 		}
 
 		// Calculate new value
@@ -90,8 +90,7 @@ export default function useCountUp(props: CountUpProps): CountUpApi {
 	}
 
 	function pauseResume() {
-		if (isRunning) setIsRunning(false);
-		else setIsRunning(true);
+		setIsRunning(prev => !prev);
 		props.onPauseResume?.({ invert, reset, start, update });
 	}
 
@@ -105,12 +104,14 @@ export default function useCountUp(props: CountUpProps): CountUpApi {
 		const oldStart = rangeStart;
 		setRangeStart(rangeEnd);
 		setRangeEnd(oldStart);
-        setIsRunning(true);
+		setIsRunning(true);
 		props.onInvert?.({ pauseResume, reset, start, update });
 	}
 
-	function update(newEnd: number) {
+    function update(newEnd: number, startOnUpdate: boolean = false) {
+        setRangeStart(value);
 		setRangeEnd(newEnd);
+		if (startOnUpdate) setIsRunning(true);
 		props.onUpdate?.({ invert, pauseResume, reset, start });
 	}
 	//#endregion
