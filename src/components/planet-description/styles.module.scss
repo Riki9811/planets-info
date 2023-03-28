@@ -1,0 +1,39 @@
+.link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1ch;
+	color: var(--white-50);
+
+	> a {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1ch;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+}
+
+.desc {
+	min-height: 150px;
+	margin-bottom: 23px;
+}
+
+// width < 768px -> phone
+@media only screen and (max-width: 57em) {
+	.desc {
+		min-height: 130px;
+	}
+}
+
+// width < 768px -> phone
+@media only screen and (max-width: 48em) {
+	.desc {
+		padding-inline: 2rem;
+	}
+
+	.link {
+		justify-content: center;
+	}
+}

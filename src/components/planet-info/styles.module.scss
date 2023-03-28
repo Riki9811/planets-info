@@ -18,77 +18,18 @@
 
 .planet {
 	grid-area: planet;
-
-	> div {
-		width: 100%;
-		height: 100%;
-		position: relative;
-		display: grid;
-		place-items: center;
-	}
-}
-
-.geology {
-	position: absolute;
-	top: 60%;
-	left: 50%;
-	translate: -50% 0;
-	width: 163px;
-	height: 199px;
-	background-size: cover;
-	transform-origin: top center;
-
-	&.mercury {
-		background-image: url(../../assets/geology/mercury.png);
-	}
-	&.venus {
-		background-image: url(../../assets/geology/venus.png);
-	}
-	&.earth {
-		background-image: url(../../assets/geology/earth.png);
-	}
-	&.mars {
-		background-image: url(../../assets/geology/mars.png);
-	}
-	&.jupiter {
-		background-image: url(../../assets/geology/jupiter.png);
-	}
-	&.saturn {
-		background-image: url(../../assets/geology/saturn.png);
-	}
-	&.uranus {
-		background-image: url(../../assets/geology/uranus.png);
-	}
-	&.neptune {
-		background-image: url(../../assets/geology/neptune.png);
-	}
+	display: grid;
+	place-items: center;
 }
 
 .title {
 	grid-area: title;
 	align-self: end;
-    width: min-content;
+	width: min-content;
 }
 
 .desc {
 	grid-area: desc;
-}
-
-.link {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 1ch;
-	color: var(--white-50);
-
-	> a {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 1ch;
-		font-weight: bold;
-		text-decoration: underline;
-	}
 }
 
 .btns {
@@ -104,4 +45,79 @@
 	flex-direction: row;
 	justify-content: space-evenly;
 	gap: 30px;
+}
+
+// width < 912px -> tablet
+@media only screen and (max-width: 57em) {
+	.container {
+		height: auto;
+		column-gap: 109px;
+		grid-template:
+			"planet planet" auto
+			"title btns" min-content
+			"desc btns" min-content
+			"data data" min-content /
+			2fr 1fr;
+	}
+
+	.planet {
+		min-height: 460px;
+	}
+
+	.btns {
+		justify-content: center;
+	}
+
+	.data {
+		justify-content: space-between;
+	}
+}
+
+// width < 768px -> phone
+@media only screen and (max-width: 48em) {
+	.container {
+		height: auto;
+		grid-template:
+			"planet"
+			"title"
+			"desc"
+			"data" /
+			auto;
+		font-size: 80%;
+		gap: 16px;
+        padding: 0;
+	}
+
+	.planet {
+		min-height: 235px;
+        margin-block: 2rem;
+	}
+
+	.title {
+		font-size: 2.5rem;
+		line-height: 2.7rem;
+		width: auto;
+		text-align: center;
+	}
+
+	.desc {
+		text-align: center;
+	}
+
+	.data {
+		flex-direction: column;
+        gap: 10px;
+	}
+
+	.btns {
+		position: fixed;
+		top: 4.5rem;
+		left: 0;
+		width: 100vw;
+		height: 51px;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: space-evenly;
+		border-bottom: 2px solid var(--white-20);
+	}
 }

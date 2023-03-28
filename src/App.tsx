@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Header from "./components/header";
 import { createContext, useRef } from "react";
 import useMediaQuery from "./hooks/useMediaQuery";
+import Header from "./components/header";
 import styles from "./App.module.scss";
 
 type Context = {

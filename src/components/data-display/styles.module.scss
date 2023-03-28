@@ -6,6 +6,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 20px 23px;
+	white-space: nowrap;
 
 	> span:first-child {
 		color: var(--white-50);
@@ -13,5 +14,35 @@
 }
 
 .tempButton {
-    margin-top: 2em;
+	margin-top: 2em;
+}
+
+// width < 912px -> tablet
+@media only screen and (max-width: 57em) {
+	.container {
+		width: 200px;
+		height: auto;
+		padding-right: 0;
+	}
+}
+
+// width < 768px -> phone
+@media only screen and (max-width: 48em) {
+	.container {
+		flex-direction: row;
+		align-items: center;
+		width: auto;
+		height: auto;
+		padding: 1em 1.3em;
+
+		> span:first-child {
+			font-size: 0.5rem;
+            line-height: 0.6rem;
+		}
+        
+		> span:last-child {
+            font-size: 1.5rem;
+            line-height: unset;
+		}
+	}
 }

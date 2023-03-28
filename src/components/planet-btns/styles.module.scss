@@ -1,0 +1,37 @@
+.mobile {
+	background-color: var(--dark-blue);
+}
+
+.span {
+	position: relative;
+	display: grid;
+	place-items: center;
+
+	font-family: var(--spartan);
+	font-weight: bold;
+	font-size: 0.6rem;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	color: var(--white-50);
+	transition: color 300ms ease-in-out;
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 4px;
+		bottom: 0;
+		left: 50%;
+		translate: -50%;
+		background-color: var(--planet-col);
+		transition: width 300ms ease-in-out;
+	}
+}
+
+.span[data-active="true"] {
+	color: var(--white);
+
+	&::after {
+		width: 120%;
+	}
+}

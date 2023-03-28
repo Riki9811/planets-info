@@ -1,60 +1,14 @@
-import { AnimatePresence, motion, Variants } from "framer-motion";
-import { useContext, useEffect, useMemo, useState } from "react";
-import PlanetData, { PlanetDescription, PlanetName } from "../../types/PlanetData";
+import { motion } from "framer-motion";
+import { useContext, useMemo, useState } from "react";
+import { AppContext } from "../../App";
+import useCountUp from "../../hooks/useCountUp";
+import PlanetData, { PlanetName } from "../../types/PlanetData";
+import createMotionProps from "../../utils/MotionAnimations";
 import PlanetSvg from "../planet-svg";
 import DataDisplay from "../data-display";
-import { ReactComponent as SourceIcon } from "../../assets/icons/source.svg";
-import useCountUp from "../../hooks/useCountUp";
-import { AppContext } from "../../App";
 import styles from "./styles.module.scss";
-
-//#region ANIMATIONS
-const TITLE_ANIMATION: Variants = {
-	hidden: {
-		scale: 0,
-	},
-	show: {
-		scale: 1,
-	},
-};
-
-const PLANET_ANIMATION: Variants = {
-	hidden: {
-		scale: 0.7,
-		opacity: 0,
-		translateX: "30%",
-	},
-	show: {
-		scale: 1,
-		opacity: 1,
-		translateX: 0,
-	},
-	exit: {
-		scale: 0.7,
-		opacity: 0,
-		translateX: "-30%",
-	},
-};
-
-const GEOLOGY_BUBBLE_ANIMATION: Variants = {
-	hidden: {
-		scale: 0,
-		opacity: 0,
-		transition: {
-			ease: [0.5, -0.5, 0.5, 1],
-			duration: 0.5,
-		},
-	},
-	show: {
-		scale: 1,
-		opacity: 1,
-		transition: {
-			ease: [0.5, 0, 0.5, 1.5],
-			duration: 0.5,
-		},
-	},
-};
-//#endregion
+import PlanetDescription from "../planet-description";
+import PlanetBtns from "../planet-btns";
 
 interface PlanetInfoProps {
 	data: PlanetData;
@@ -65,7 +19,7 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 	const name = data.name.toLowerCase() as PlanetName;
 	// What info to show
 	const [showing, setShowing] = useState<"overview" | "structure" | "geology">("overview");
-	const description = useMemo<PlanetDescription>(() => data[showing], [data, showing]);
+	const description = useMemo(() => data[showing], [data, showing]);
 	// Planet stats
 	const { formatters } = useContext(AppContext)!;
 	const [countUpDuration, setCountUpDuration] = useState<number>(0.8);
@@ -88,87 +42,24 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 		}
 	}
 
-	//#region RENDERERS
-	function renderPlanet() {
-		return (
-			<div className={styles.planet}>
-				<motion.div {...motionProps(PLANET_ANIMATION, false)}>
-					<PlanetSvg name={name} internal={showing === "structure"} />
-					<AnimatePresence>
-						{showing === "geology" && <motion.div {...motionProps(GEOLOGY_BUBBLE_ANIMATION)} className={`${styles.geology} ${styles[name]}`} />}
-					</AnimatePresence>
-				</motion.div>
-			</div>
-		);
-	}
+	return (
+		<div className={`${name}-col ${styles.container}`}>
+			<PlanetSvg name={name} showInternal={showing === "structure"} showGeology={showing === "geology"} className={styles.planet} />
 
-	function renderTitle() {
-		return (
-			<motion.h1 {...motionProps(TITLE_ANIMATION, false)} className={styles.title} onAnimationStart={onAnimationStart}>
+			<motion.h1 {...createMotionProps("PlanetTitle", false)} className={styles.title} onAnimationStart={onAnimationStart}>
 				{name}
 			</motion.h1>
-		);
-	}
 
-	function renderDescription() {
-		return (
-			<div className={styles.desc}>
-				<p>{description.content}</p>
-				<p className={styles.link}>
-					Source:{" "}
-					<a href={description.source}>
-						Wikipedia <SourceIcon style={{ float: "right" }} />
-					</a>
-				</p>
-			</div>
-		);
-	}
+			<PlanetDescription content={description.content} source={description.source} className={styles.desc} />
 
-	function renderButtons() {
-		return (
-			<div className={styles.btns}>
-				<button data-active={showing === "overview"} onClick={showOverview}>
-					Overview
-				</button>
-				<button data-active={showing === "structure"} onClick={showStructure}>
-					Internal Structure
-				</button>
-				<button data-active={showing === "geology"} onClick={showGeology}>
-					Surface Geology
-				</button>
-			</div>
-		);
-	}
+			<PlanetBtns {...{ showing, showGeology, showStructure, showOverview }} className={styles.btns} />
 
-	function renderData() {
-		return (
 			<div className={styles.data}>
 				<DataDisplay title="rotation time" data={rotation} formatter={formatters.timeFormatter} />
 				<DataDisplay title="revolution time" data={revolution} formatter={formatters.timeFormatter} />
 				<DataDisplay title="radius" data={radius} formatter={formatters.distFormatter} />
 				<DataDisplay title="average temp." data={temperature} formatter={formatters.tempFormatter} />
 			</div>
-		);
-	}
-	//#endregion
-
-	return (
-		<div className={`${name}-col ${styles.container}`}>
-			{renderPlanet()}
-			{renderTitle()}
-			{renderDescription()}
-			{renderButtons()}
-			{renderData()}
 		</div>
 	);
-}
-
-function motionProps(variants: Variants, exitOnInitial: boolean = true) {
-	return {
-		initial: "hidden",
-		animate: "show",
-		exit: exitOnInitial ? "hidden" : "exit",
-		transition: { duration: 1 },
-		variants,
-	};
 }

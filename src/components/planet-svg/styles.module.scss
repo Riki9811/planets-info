@@ -29,40 +29,58 @@
 	}
 }
 
+.geology {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	translate: -50% 0;
+	width: 163px;
+	height: 199px;
+	background-size: cover;
+	transform-origin: top center;
+	background-image: var(--image-geology);
+}
+
 .mercury {
 	--size: 290px;
 	--image: url(../../assets/planets/mercury.svg);
 	--image-internal: url(../../assets/planets-internal/mercury.svg);
+	--image-geology: url(../../assets/geology/mercury.png);
 }
 
 .venus {
 	--size: 400px;
 	--image: url(../../assets/planets/venus.svg);
 	--image-internal: url(../../assets/planets-internal/venus.svg);
+	--image-geology: url(../../assets/geology/venus.png);
 }
 
 .earth {
 	--size: 450px;
 	--image: url(../../assets/planets/earth.svg);
 	--image-internal: url(../../assets/planets-internal/earth.svg);
+	--image-geology: url(../../assets/geology/earth.png);
 }
 
 .mars {
 	--size: 336px;
 	--image: url(../../assets/planets/mars.svg);
 	--image-internal: url(../../assets/planets-internal/mars.svg);
+	--image-geology: url(../../assets/geology/mars.png);
 }
 
 .jupiter {
 	--size: 582px;
 	--image: url(../../assets/planets/jupiter.svg);
 	--image-internal: url(../../assets/planets-internal/jupiter.svg);
+	--image-geology: url(../../assets/geology/jupiter.png);
 }
 
 .saturn {
 	--size: 666px;
 	--image: url(../../assets/planets/saturn.svg);
 	--image-internal: url(../../assets/planets-internal/saturn.svg);
+	--image-geology: url(../../assets/geology/saturn.png);
 
 	.rings {
 		position: absolute;
@@ -75,10 +93,85 @@
 	--size: 458px;
 	--image: url(../../assets/planets/uranus.svg);
 	--image-internal: url(../../assets/planets-internal/uranus.svg);
+	--image-geology: url(../../assets/geology/uranus.png);
 }
 
 .neptune {
 	--size: 450px;
 	--image: url(../../assets/planets/neptune.svg);
 	--image-internal: url(../../assets/planets-internal/neptune.svg);
+	--image-geology: url(../../assets/geology/neptune.png);
+}
+
+// width < 912px -> tablet
+@media only screen and (max-width: 57em) {
+	.planet {
+		background-size: contain;
+
+		&::before,
+		&::after {
+			background-size: contain;
+		}
+
+		.rings {
+			background-size: contain;
+		}
+	}
+
+	.mercury {
+		--size: 184px;
+	}
+	.venus {
+		--size: 253px;
+	}
+	.earth {
+		--size: 285px;
+	}
+	.mars {
+		--size: 213px;
+	}
+	.jupiter {
+		--size: 369px;
+	}
+	.saturn {
+		--size: 422px;
+	}
+	.uranus {
+		--size: 290px;
+	}
+	.neptune {
+		--size: 285px;
+	}
+}
+
+// width < 768px -> phone
+@media only screen and (max-width: 48em) {
+	.geology {
+		scale: 0.6;
+	}
+
+	.mercury {
+		--size: 111px;
+	}
+	.venus {
+		--size: 154px;
+	}
+	.earth {
+		--size: 173px;
+	}
+	.mars {
+		--size: 129px;
+	}
+	.jupiter {
+		--size: 224px;
+	}
+	.saturn {
+		--size: 256px;
+	}
+	.uranus {
+		--size: 176px;
+	}
+	.neptune {
+		--size: 173px;
+	}
 }
