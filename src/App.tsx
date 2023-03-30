@@ -1,6 +1,7 @@
 import { createContext, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import styles from "./App.module.scss";
+import Footer from "./components/footer";
 import Header from "./components/header";
 import useMediaQuery from "./hooks/useMediaQuery";
 
@@ -27,9 +28,10 @@ export default function App() {
 		<AppContext.Provider value={{ isMobile, formatters: formatters.current }}>
 			<div className={styles.app}>
 				<Header />
-				<section className={styles.outlet}>
+				<main className={styles.outlet}>
 					<Outlet />
-				</section>
+				</main>
+				<Footer />
 			</div>
 		</AppContext.Provider>
 	);
