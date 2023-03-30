@@ -1,5 +1,5 @@
 import { createContext, useRef } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import styles from "./App.module.scss";
 import Footer from "./components/footer";
 import Header from "./components/header";
@@ -23,15 +23,16 @@ export default function App() {
 		distFormatter: new Intl.NumberFormat("en-US", { style: "unit", unit: "kilometer" }),
 		timeFormatter: new Intl.NumberFormat("en-US", { style: "unit", unit: "day" }),
 	});
+	const location = useLocation();
 
 	return (
 		<AppContext.Provider value={{ isMobile, formatters: formatters.current }}>
 			<div className={styles.app}>
 				<Header />
-				<main className={styles.outlet}>
+				<main className={`${styles.outlet} ${location.pathname === "/" ? styles.home : null}`}>
 					<Outlet />
+					<Footer />
 				</main>
-				<Footer />
 			</div>
 		</AppContext.Provider>
 	);
