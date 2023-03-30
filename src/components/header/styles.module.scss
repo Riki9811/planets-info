@@ -1,10 +1,12 @@
 .header {
+	position: fixed;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	padding-inline: 3em 2em;
 	border-bottom: 2px solid var(--white-20);
+	width: 100%;
 	height: 5.3125em; // 85px
 	min-height: 5.3125em; // 85px
 	background-color: var(--dark-blue);
@@ -96,10 +98,10 @@
 	}
 
 	.nav {
-		position: absolute;
+		position: fixed;
 		left: 0;
-		top: 5.3125em;
-		height: calc(100vh - 5.3125em);
+		top: 4.5rem;
+		height: calc(100dvh - 4.5rem);
 		width: 100vw;
 	}
 
@@ -107,7 +109,7 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		background-color: var(--dark-blue);
-		padding: 1em 1.5em;
+		padding: 0.5em 1.5em;
 		gap: 0;
 		overflow-y: auto;
 		overflow-x: hidden;

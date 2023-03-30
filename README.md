@@ -55,9 +55,9 @@ In addition to the specifications given on Frontend Mentor the web app will pres
 - [x] Header with navbar and navigation options.
 - [x] Star background (flickering + shooting stars).
 - [x] Home page solar system with pseudo-realistic animations.
-- [ ] Planet page layout depending on user device.
-- [ ] Info shower connected to all the routes.
-- [ ] CSS polishing.
+- [x] Planet page layout depending on user device.
+- [x] Info shower connected to all the routes.
+- [x] CSS polishing.
 
 See the [open issues](https://github.com/Riki9811/planets-info/issues) for a full list of proposed features (and known issues).
 

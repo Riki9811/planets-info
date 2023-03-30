@@ -6,7 +6,7 @@ export interface CountUpApi {
 	pauseResume: VoidFn;
 	reset: VoidFn;
 	start: VoidFn;
-    update: UpdateFn;
+	update: UpdateFn;
 	value: number;
 }
 
@@ -65,7 +65,7 @@ export interface CountUpProps {
 	duration?: number;
 	decimals?: number;
 	startOnMount?: boolean;
-    formatter?: Intl.NumberFormat
+	formatter?: Intl.NumberFormat;
 
 	onEnd?: OnEndCallback;
 	onStart?: OnStartCallback;

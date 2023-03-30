@@ -1,8 +1,8 @@
-import { Outlet } from "react-router-dom";
 import { createContext, useRef } from "react";
-import useMediaQuery from "./hooks/useMediaQuery";
-import Header from "./components/header";
+import { Outlet } from "react-router-dom";
 import styles from "./App.module.scss";
+import Header from "./components/header";
+import useMediaQuery from "./hooks/useMediaQuery";
 
 type Context = {
 	isMobile: boolean;

@@ -6,15 +6,24 @@
 
 .outlet {
 	flex-grow: 1;
-	padding: 2% 1%;
+	padding: 1%;
+	margin-top: 4.5rem;
 	overflow-x: hidden;
 	overflow-y: auto;
+}
+
+// width < 912px -> tablet
+@media only screen and (max-width: 57em) {
+	.outlet {
+		margin-top: 139.5px;
+		padding: 0 3% 3%;
+	}
 }
 
 // width < 768px -> phone
 @media only screen and (max-width: 48em) {
 	.outlet {
-		margin-top: 51.5px;
-        padding: 4%;
+		margin-top: 123.5px;
+		padding: 4%;
 	}
 }

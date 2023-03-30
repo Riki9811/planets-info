@@ -1,34 +1,8 @@
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import createMotionProps from "../../utils/MotionAnimations";
 import styles from "./styles.module.scss";
-
-const ANIMATION: Variants = {
-	hidden: {
-		opacity: 0,
-		scale: 2.5,
-		rotate: -45,
-		transition: {
-			duration: 2,
-		},
-	},
-	show: {
-		opacity: 1,
-		scale: 1,
-		rotate: 0,
-		transition: {
-			duration: 2,
-		},
-	},
-	disappear: {
-		opacity: 0,
-		scale: 0.5,
-		rotate: 45,
-		transition: {
-			duration: 2,
-		},
-	},
-};
 
 export default function HomePage() {
 	const btns = [useRef<HTMLButtonElement>(null), useRef<HTMLButtonElement>(null), useRef<HTMLButtonElement>(null)];
@@ -47,7 +21,7 @@ export default function HomePage() {
 
 	return (
 		<div className={styles.home}>
-			<motion.div className={styles["solar-system"]} variants={ANIMATION} initial="hidden" animate="show" exit="disappear">
+			<motion.div className={styles["solar-system"]} {...createMotionProps("HomePageSolarSystem", false)}>
 				<div className={styles.sun} />
 				<Link to="/neptune" className={`neptune-col ${styles.orbit} ${styles.neptune}`} />
 				<Link to="/uranus" className={`uranus-col ${styles.orbit} ${styles.uranus}`} />

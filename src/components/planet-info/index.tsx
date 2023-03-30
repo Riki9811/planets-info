@@ -4,11 +4,11 @@ import { AppContext } from "../../App";
 import useCountUp from "../../hooks/useCountUp";
 import PlanetData, { PlanetName } from "../../types/PlanetData";
 import createMotionProps from "../../utils/MotionAnimations";
-import PlanetSvg from "../planet-svg";
 import DataDisplay from "../data-display";
-import styles from "./styles.module.scss";
-import PlanetDescription from "../planet-description";
 import PlanetBtns from "../planet-btns";
+import PlanetDescription from "../planet-description";
+import PlanetSvg from "../planet-svg";
+import styles from "./styles.module.scss";
 
 interface PlanetInfoProps {
 	data: PlanetData;

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import useTypeWriter from "../../hooks/useTypeWriter";
 import { ReactComponent as SourceIcon } from "../../assets/icons/source.svg";
+import useTypeWriter from "../../hooks/useTypeWriter";
 import styles from "./styles.module.scss";
 
 interface PlanetDescriptionProps {

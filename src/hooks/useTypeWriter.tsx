@@ -68,9 +68,9 @@ export default function useTypeWriter(props: TypeWriterProps): string {
 		if (state === "write") {
 			writeText();
 			intervalRef.current = setInterval(writeText, writingDelay);
-        }
+		}
 
-        if (state === "erase") {
+		if (state === "erase") {
 			if (instantErase) {
 				const reset = fullErase ? "" : getSameStart(textRef.current, fullText);
 				textRef.current = reset;

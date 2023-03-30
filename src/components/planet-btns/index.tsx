@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import createMotionProps from "../../utils/MotionAnimations";
 import styles from "./styles.module.scss";
 
 interface PlanetBtnsProps {
@@ -15,7 +17,7 @@ export default function PlanetBtns({ showing, showOverview, showStructure, showG
 
 	if (isMobile) {
 		return (
-			<div className={`${parentClassName} ${styles.mobile}`}>
+			<motion.div {...createMotionProps("MobilePlanetButtons")} className={`${parentClassName} ${styles.mobile}`}>
 				<span data-active={showing === "overview"} onClick={showOverview} className={styles.span}>
 					Overview
 				</span>
@@ -25,7 +27,7 @@ export default function PlanetBtns({ showing, showOverview, showStructure, showG
 				<span data-active={showing === "geology"} onClick={showGeology} className={styles.span}>
 					Surface
 				</span>
-			</div>
+			</motion.div>
 		);
 	}
 

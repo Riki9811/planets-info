@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400"
-    height="400">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400">
     <circle cx="200" cy="200" r="200" fill="#F7CC7F" fill-rule="nonzero" />
 
     <mask id="mask" fill="#fff">

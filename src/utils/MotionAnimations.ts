@@ -1,4 +1,4 @@
-const MAP = {
+export const ANIMATIONS_MAP = {
 	PlanetSvg: {
 		hidden: {
 			scale: 0.7,
@@ -42,9 +42,101 @@ const MAP = {
 			scale: 1,
 		},
 	},
+	MobilePlanetButtons: {
+		hidden: {
+			translateY: "-100%",
+		},
+		show: {
+			translateY: 0,
+		},
+	},
+	HeaderUl: {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				delayChildren: 0.1,
+				staggerChildren: 0.1,
+			},
+		},
+	},
+	HeaderLi: {
+		hidden: {
+			translateX: "110%",
+			transition: {
+				ease: [0, 0.5, 0.3, 1],
+				duration: 0.5,
+			},
+		},
+		show: {
+			translateX: 0,
+			transition: {
+				ease: [0, 0.5, 0.3, 1],
+				duration: 0.5,
+			},
+		},
+	},
+	ErrorPageStagger: {
+		hidden: {
+			transition: {
+				staggerChildren: 0.25,
+				staggerDirection: -1,
+				when: "afterChildren",
+			},
+		},
+		show: {
+			transition: {
+				staggerChildren: 0.25,
+			},
+		},
+	},
+	ErrorPageZoom: {
+		hidden: {
+			scale: 0,
+			opacity: 0,
+			transition: {
+				duration: 0.5,
+			},
+		},
+		show: {
+			scale: 1,
+			opacity: 1,
+			transition: {
+				duration: 1,
+			},
+		},
+	},
+	HomePageSolarSystem: {
+		hidden: {
+			opacity: 0,
+			scale: 2.5,
+			rotate: -45,
+			transition: {
+				duration: 2,
+			},
+		},
+		show: {
+			opacity: 1,
+			scale: 1,
+			rotate: 0,
+			transition: {
+				duration: 2,
+			},
+		},
+		exit: {
+			opacity: 0,
+			scale: 0.5,
+			rotate: 45,
+			transition: {
+				duration: 2,
+			},
+		},
+	},
 };
 
-type VariantNames = keyof typeof MAP;
+type VariantNames = keyof typeof ANIMATIONS_MAP;
 
 export default function createMotionProps(animationName: VariantNames, exitOnInitial: boolean = true, duration: number = 1) {
 	return {
@@ -52,6 +144,6 @@ export default function createMotionProps(animationName: VariantNames, exitOnIni
 		animate: "show",
 		exit: exitOnInitial ? "hidden" : "exit",
 		transition: { duration },
-		variants: MAP[animationName],
+		variants: ANIMATIONS_MAP[animationName],
 	};
 }

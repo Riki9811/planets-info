@@ -1,42 +1,13 @@
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { MouseEventHandler, useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AppContext } from "../../App";
 import { ReactComponent as Chevron } from "../../assets/icons/chevron.svg";
 import { ReactComponent as Hamburger } from "../../assets/icons/hamburger.svg";
+import createMotionProps, { ANIMATIONS_MAP } from "../../utils/MotionAnimations";
 import styles from "./styles.module.scss";
 
 const ROUTES = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
-
-const UL_VARIANTS: Variants = {
-	hidden: {
-		opacity: 0,
-	},
-	show: {
-		opacity: 1,
-		transition: {
-			delayChildren: 0.1,
-			staggerChildren: 0.1,
-		},
-	},
-};
-
-const LI_VARIANTS: Variants = {
-	hidden: {
-		translateX: "110%",
-		transition: {
-			ease: [0, 0.5, 0.3, 1],
-			duration: 0.5,
-		},
-	},
-	show: {
-		translateX: 0,
-		transition: {
-			ease: [0, 0.5, 0.3, 1],
-			duration: 0.5,
-		},
-	},
-};
 
 export default function Header() {
     const { isMobile } = useContext(AppContext)!;
@@ -54,9 +25,9 @@ export default function Header() {
 	function renderMobileNav() {
 		return (
 			<nav id="nav-list" className={styles.nav}>
-				<motion.ul className={styles["nav-list"]} variants={UL_VARIANTS} initial="hidden" animate="show" exit="hidden">
+				<motion.ul className={styles["nav-list"]} {...createMotionProps("HeaderUl")}>
 					{ROUTES.map((planet, index) => (
-						<motion.li key={index} variants={LI_VARIANTS}>
+						<motion.li key={index} variants={ANIMATIONS_MAP["HeaderLi"]}>
 							<MobileNavLink key={index} planetName={planet} onClickCallback={closeMobileMenu} />
 						</motion.li>
 					))}
