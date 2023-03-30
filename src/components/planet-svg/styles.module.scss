@@ -1,4 +1,5 @@
 .planet {
+	isolation: isolate;
 	position: relative;
 	width: var(--size);
 	height: var(--size);
@@ -12,6 +13,7 @@
 		background-image: var(--image-internal);
 		rotate: y 90deg;
 		transition: rotate 500ms ease-in-out;
+		z-index: -1;
 	}
 
 	&::after {
