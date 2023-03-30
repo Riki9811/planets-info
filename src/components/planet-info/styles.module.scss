@@ -1,6 +1,6 @@
 .container {
 	width: 100%;
-	height: 100%;
+	height: 90%;
 
 	display: grid;
 	grid-template:
@@ -10,8 +10,6 @@
 		"data data" min-content /
 		2fr 1fr;
 	row-gap: 23px;
-
-	margin: 0 auto;
 	max-width: 1110px;
 }
 

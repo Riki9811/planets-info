@@ -34,14 +34,6 @@ export const ANIMATIONS_MAP = {
 			},
 		},
 	},
-	PlanetTitle: {
-		hidden: {
-			scale: 0,
-		},
-		show: {
-			scale: 1,
-		},
-	},
 	MobilePlanetButtons: {
 		hidden: {
 			translateY: "-100%",
@@ -131,6 +123,42 @@ export const ANIMATIONS_MAP = {
 			rotate: 45,
 			transition: {
 				duration: 2,
+			},
+		},
+	},
+	GeneralSlideLeft: {
+		hidden: {
+			opacity: 0,
+			translateX: "100px",
+			transition: {
+				delay: 0.2,
+				duration: 1,
+			},
+		},
+		show: {
+			opacity: 1,
+			translateX: 0,
+			transition: {
+				delay: 0.2,
+				duration: 1,
+			},
+		},
+	},
+	GeneralSlideUp: {
+		hidden: {
+			opacity: 0,
+			translateY: "50px",
+			transition: {
+				delay: 0.2,
+				duration: 1,
+			},
+		},
+		show: {
+			opacity: 1,
+			translateY: 0,
+			transition: {
+				delay: 0.2,
+				duration: 1,
 			},
 		},
 	},

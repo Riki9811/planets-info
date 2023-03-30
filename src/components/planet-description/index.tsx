@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ReactComponent as SourceIcon } from "../../assets/icons/source.svg";
 import useTypeWriter from "../../hooks/useTypeWriter";
+import createMotionProps from "../../utils/MotionAnimations";
 import styles from "./styles.module.scss";
 
 interface PlanetDescriptionProps {
@@ -13,7 +14,7 @@ export default function PlanetDescription({ content, source, className: parentCl
 	const desc = useTypeWriter({ fullText: content, delay: 10, grouping: 3, instantErase: true });
 
 	return (
-		<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={parentClassName}>
+		<motion.div {...createMotionProps("GeneralSlideLeft")} className={parentClassName}>
 			<p className={styles.desc}>{desc}</p>
 
 			<p className={styles.link}>

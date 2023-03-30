@@ -33,9 +33,9 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 	const showGeology = () => setShowing("geology");
 
 	function onAnimationStart(animName: string) {
-		if (animName === "exit") {
-            setCountUpDuration(0.4);
-            updateRotation(0, true);
+		if (animName === "hidden") {
+			setCountUpDuration(0.4);
+			updateRotation(0, true);
 			updateRevolution(0, true);
 			updateRadius(0, true);
 			updateTemp(0, true);
@@ -46,7 +46,7 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 		<div className={`${name}-col ${styles.container}`}>
 			<PlanetSvg name={name} showInternal={showing === "structure"} showGeology={showing === "geology"} className={styles.planet} />
 
-			<motion.h1 {...createMotionProps("PlanetTitle", false)} className={styles.title} onAnimationStart={onAnimationStart}>
+			<motion.h1 {...createMotionProps("GeneralSlideLeft")} className={styles.title} onAnimationStart={onAnimationStart}>
 				{name}
 			</motion.h1>
 
@@ -54,12 +54,12 @@ export default function PlanetInfo({ data }: PlanetInfoProps) {
 
 			<PlanetBtns {...{ showing, showGeology, showStructure, showOverview }} className={styles.btns} />
 
-			<div className={styles.data}>
+			<motion.div {...createMotionProps("GeneralSlideUp")} className={styles.data}>
 				<DataDisplay title="rotation time" data={rotation} formatter={formatters.timeFormatter} />
 				<DataDisplay title="revolution time" data={revolution} formatter={formatters.timeFormatter} />
 				<DataDisplay title="radius" data={radius} formatter={formatters.distFormatter} />
 				<DataDisplay title="average temp." data={temperature} formatter={formatters.tempFormatter} />
-			</div>
+			</motion.div>
 		</div>
 	);
 }

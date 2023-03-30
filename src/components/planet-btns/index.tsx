@@ -13,11 +13,11 @@ interface PlanetBtnsProps {
 }
 
 export default function PlanetBtns({ showing, showOverview, showStructure, showGeology, className: parentClassName = "" }: PlanetBtnsProps) {
-    const { isMobile } = useContext(AppContext)!;
+	const { isMobile } = useContext(AppContext)!;
 
 	if (isMobile) {
 		return (
-			<motion.div {...createMotionProps("MobilePlanetButtons")} className={`${parentClassName} ${styles.mobile}`}>
+			<motion.div key={"mobile"} {...createMotionProps("MobilePlanetButtons")} className={`${parentClassName} ${styles.mobile}`}>
 				<span data-active={showing === "overview"} onClick={showOverview} className={styles.span}>
 					Overview
 				</span>
@@ -32,7 +32,7 @@ export default function PlanetBtns({ showing, showOverview, showStructure, showG
 	}
 
 	return (
-		<div className={parentClassName}>
+		<motion.div key={"desktop"} {...createMotionProps("GeneralSlideLeft")} className={parentClassName}>
 			<button data-active={showing === "overview"} onClick={showOverview}>
 				Overview
 			</button>
@@ -42,6 +42,6 @@ export default function PlanetBtns({ showing, showOverview, showStructure, showG
 			<button data-active={showing === "geology"} onClick={showGeology}>
 				Surface Geology
 			</button>
-		</div>
+		</motion.div>
 	);
 }

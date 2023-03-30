@@ -10,6 +10,8 @@
 	margin-top: 4.5rem;
 	overflow-x: hidden;
 	overflow-y: auto;
+    display: grid;
+    place-items: center;
 }
 
 // width < 912px -> tablet
